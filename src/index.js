@@ -10,17 +10,18 @@ server.listen('127.0.0.1:8050',{
 },function(request, response){
 
   
-  var query = request.url.split('?')[1];
-  // console.log(query,'===')
-  var sp = query.split('=')[1]
-  if(!query || !sp){
+  var loc = request.url.indexOf('=');
+  console.log(request.url.slice(loc+1))
+  console.log(JSON.stringify(request),'===')
+  var sp = request.url.slice(loc+1)
+  if(!sp){
       response.status=500;
       response.write('缺少参数');
       response.close();
   }
-  console.log(decodeURIComponent(sp))
-  // urls.push(sp)
-  urls.push("https://mp.weixin.qq.com/s?__biz=MzI1NDk5MzU4Nw==&tempkey=OTM2X1dEaWJkaThMM3l3R09OQytINnNiSnNIb0FGb29TLUVkdHlxWDljRU5Gb2s5YklMQVlacEVmd1d6UjZaTFp3QW1YRHFjVUVoLU1BUWdQTjF1S1hIQkM5SGYyN0pfSFNDNWdIZWNGWmF4V2pnT1pIczVnV18teE9RQWJpeDBTMnNoLWE1alpCbE5MTWdvSXctaEZMWTh4djdXZHV4ZzRwc0xhcUZVOHd%2Bfg%3D%3D&chksm=6a3df4de5d4a7dc8f8860591c4c9eef874c874cccde0e3368c2769d9a6cc81795b8934b16cfb#rd");
+  // console.log(decodeURIComponent(sp))
+  urls.push(sp)
+  // urls.push("https://mp.weixin.qq.com/s?__biz=MzI1NDk5MzU4Nw==&tempkey=OTM2X1dEaWJkaThMM3l3R09OQytINnNiSnNIb0FGb29TLUVkdHlxWDljRU5Gb2s5YklMQVlacEVmd1d6UjZaTFp3QW1YRHFjVUVoLU1BUWdQTjF1S1hIQkM5SGYyN0pfSFNDNWdIZWNGWmF4V2pnT1pIczVnV18teE9RQWJpeDBTMnNoLWE1alpCbE5MTWdvSXctaEZMWTh4djdXZHV4ZzRwc0xhcUZVOHd%2Bfg%3D%3D&chksm=6a3df4de5d4a7dc8f8860591c4c9eef874c874cccde0e3368c2769d9a6cc81795b8934b16cfb#rd");
   var page = webpage.create()
 
 var u = ['http://mp.weixin.qq.com/s?__biz=MzA5NTEzNzgyMA==&mid=2654788368&idx=1&sn=3e82ac8ce808ce5c6e2d9c7e902d1c09&scene=21#wechat_redirect']
