@@ -20,8 +20,10 @@ server.listen('127.0.0.1:8050',{
       response.close();
   }
   // console.log(decodeURIComponent(sp))
-  urls.push(sp)
+  // urls.push(sp)
   // urls.push("https://mp.weixin.qq.com/s?__biz=MzI1NDk5MzU4Nw==&tempkey=OTM2X1dEaWJkaThMM3l3R09OQytINnNiSnNIb0FGb29TLUVkdHlxWDljRU5Gb2s5YklMQVlacEVmd1d6UjZaTFp3QW1YRHFjVUVoLU1BUWdQTjF1S1hIQkM5SGYyN0pfSFNDNWdIZWNGWmF4V2pnT1pIczVnV18teE9RQWJpeDBTMnNoLWE1alpCbE5MTWdvSXctaEZMWTh4djdXZHV4ZzRwc0xhcUZVOHd%2Bfg%3D%3D&chksm=6a3df4de5d4a7dc8f8860591c4c9eef874c874cccde0e3368c2769d9a6cc81795b8934b16cfb#rd");
+  urls.push("https://mp.weixin.qq.com/s?__biz=MzI1NDk5MzU4Nw==&tempkey=OTM3XzlPVkIybG5oNG1teHZUWURYc05pRWdoVkpibFdHWlR5ZUg4UVI2STk1aEZ4eVFoZVNiTm5SOEVOdmZxNDBMY0dMYlJUNVNoSlp6bGZiM1lFa0dfUmdRZXFON010WHFxVkhPeTE2NV9yM0ZnaW1qcEZhenhMLU9aM0hNbUZnXzF5MVVkNUhNUmlmUXExcEJRSkl0SnNHVWlNMzJEaDVLMTVacUZPd3d%2Bfg%3D%3D&chksm=6a3df4de5d4a7dc8f8860591c4c9eef874c874cccde0e3368c2769d9a6cc81795b8934b16cfb#rd");
+  
   var page = webpage.create()
 
 var u = ['http://mp.weixin.qq.com/s?__biz=MzA5NTEzNzgyMA==&mid=2654788368&idx=1&sn=3e82ac8ce808ce5c6e2d9c7e902d1c09&scene=21#wechat_redirect']
