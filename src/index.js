@@ -11,6 +11,10 @@ server.listen('127.0.0.1:8049', {
     // 'keepAlive': true
 }, function(req, response) {
     console.log(req.url)
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+    response.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    response.setHeader("X-Powered-By", ' 3.2.1');
 
     if (req.url.indexOf('favicon') >= 0) {
         response.status = 200;
