@@ -1,27 +1,30 @@
 var webserver = require('webserver')
 var server = webserver.create();
+// var request = require('request');
+var http = require('http');
+var fs = require('fs');
 
 var urls = []
 var webpage = require('webpage')
 
 
 
-server.listen('127.0.0.1:8050', {
+server.listen('127.0.0.1:8049', {
     // 'keepAlive': true
-}, function(request, response) {
+}, function(req, response) {
 
 
-    if (request.url.indexOf('favicon') >= 0) {
+    if (req.url.indexOf('favicon') >= 0) {
         response.status = 200;
         response.write('');
         response.close();
-        // console.log(request.url, request.url.indexOf('favicon'), 'true---')
+        // console.log(req.url, req.url.indexOf('favicon'), 'true---')
     } else {
 
-        // var loc = request.url.indexOf('=');
-            // console.log(JSON.stringify(request),'===')
-        // var sp = request.url.slice(loc + 1)
-        var sp = JSON.parse(request.post).url
+        // var loc = req.url.indexOf('=');
+            // console.log(JSON.stringify(req),'===')
+        // var sp = req.url.slice(loc + 1)
+        var sp = JSON.parse(req.post).url
         if (!sp) {
             response.status = 500;
             response.write('缺少参数');
@@ -75,6 +78,8 @@ server.listen('127.0.0.1:8050', {
             startTime = +new Date()
 
             page.render('./page/' + title + '.png')
+
+            request('./page/'+title+'.png').pipe(fs.createWriteStream('qqq.png'))
         }
 
         page.onConsoleMessage = function(msg) {
