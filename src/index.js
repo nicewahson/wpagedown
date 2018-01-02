@@ -3,6 +3,8 @@ var webpage = require('webpage')
 
 
 var page = webpage.create()
+var system = require('system');
+var args = system.args;
 
 
 // page.viewportSize = {width: 725, height: 500}
@@ -22,7 +24,7 @@ function renderAction(){
   loadedImgCount++
   var now = +new Date()
   var custom = (now - startTime)/1000
-  var title = page.title.replace(/\//g, '|')
+  var title = page.title.replace(/\//g, '|') || 'temp'
 
   console.log('渲染第'+loadedImgCount+'张页面，耗时：'+custom+'s')
   console.log('渲染到','./page/' + title+'.png')
@@ -43,10 +45,19 @@ page.onConsoleMessage = function(msg) {
 }
 
 function renderPage(){
+    if (args.length === 1) {
+        return console.log('Try to pass some arguments when invoking this script!');
+      } else {
+          console.log(args)
+        args.forEach(function(arg, i) {
+          console.log(i + ': ' + arg);
+        });
+      }
+
   if(urls.length){
     var url = urls.shift()
-    console.log('渲染url', url)
-    page.open(url, function(){
+    console.log('渲染url', (decodeURIComponent(args[1])))
+    page.open(decodeURIComponent(args[1]), function(){
       imgCount = 0
       var imgArray = page.evaluate(function(){
         var LoadedImgs = []
