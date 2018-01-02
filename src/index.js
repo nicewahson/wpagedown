@@ -7,7 +7,7 @@ var webpage = require('webpage')
 
 
 
-server.listen('127.0.0.1:8049', {
+server.listen('8049', {
     // 'keepAlive': true
 }, function(req, response) {
     console.log(req.url)
