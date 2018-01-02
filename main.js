@@ -21,7 +21,7 @@ http.createServer(function(req, res) {
         // const fc = fs.statSync('./page')
         fs.readdir('./page', function(err, files) {
 
-            if (!files[0]) {
+            if (!files || !files[0]) {
                 res.setHeader('Content-Type', 'application/json;charset=utf-8')
                 res.statusCode = 500
                 res.end(JSON.stringify({ errCode: 1, msg: '没有可供下载文件' }), 'utf-8')
