@@ -22,7 +22,7 @@ http.createServer(function (req, res) {
     res.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     res.setHeader("X-Powered-By", ' 3.2.1');
     req.on('data', function (data) {
-        console.log(JSON.parse(data.toString()).url, 'data')
+        // console.log(JSON.parse(data.toString()).url, 'data')
 
 
         if (req.url.indexOf('favicon') == -1) {
@@ -41,7 +41,7 @@ http.createServer(function (req, res) {
                     //     //     msg: '没有可供下载文件'
                     //     // }), 'utf-8')
                     // } else {
-                    console.log(cmdStr + us)
+                    // console.log(cmdStr + us)
 
 
                     if (err) {
