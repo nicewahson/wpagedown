@@ -24,7 +24,7 @@ http.createServer(function(req, res) {
             if (!files[0]) {
                 res.setHeader('Content-Type', 'application/json;charset=utf-8')
                 res.statusCode = 500
-                res.end({ errCode: 1, msg: '没有可供下载文件' }, 'utf-8')
+                res.end(JSON.stringify({ errCode: 1, msg: '没有可供下载文件' }), 'utf-8')
             } else {
                 res.setHeader('Content-Type', 'application/octet-stream')
                 res.setHeader('Content-Disposition', 'attachment;filename=' + files[0])
