@@ -28,7 +28,7 @@ function renderAction(){
   console.log('渲染到','./page/' + title+'.png')
   startTime = +new Date()
   
-  page.render('./page/' + title+'.pdf')
+  page.render('./page/' + title+'.png')
 }
 
 page.onConsoleMessage = function(msg) {
