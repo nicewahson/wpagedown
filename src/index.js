@@ -34,7 +34,6 @@ function renderAction() {
 }
 
 page.onConsoleMessage = function (msg) {
-console.log(msg)
     if (msg.indexOf("IMGLOAD") >= 0) {
         imgCount++
         if (imgCount == summaryCount) {
