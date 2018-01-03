@@ -10,12 +10,12 @@
     <button onclick="download()">下载</button>
     <script>
         function download(){
-            let url = 'http://172.16.255.45:8048'
+            let url = 'http://192.168.88.203:8048'
             fetch(url,{
                 method: 'POST',
                 // credentials: 'include',
                 body: JSON.stringify({
-                    url: 'https://mp.weixin.qq.com/s?__biz=MzI5ODk4Njc3NQ==&tempkey=OTM3X3VWY2JuQ2U1SWtzTVR6S3hXZEFndE1jVDJWa2RENlRrRmNMOHg5MWFhRGxmLTZmRmxKQ1ZzZnZicWIweVVwSXZ5RWliUVdCeGR0WDgxNzBoNDc2d2hPT2F6RXM3M0VRTWFiUk8wc21MNjlhdmQyT2wwamwyVE5jbkY5RnpkZjAxVUNvYUlyMTRPQTZqbTY1VXRRdE5IM0dwczBzRFVXaTRYMTM0R2d%2Bfg%3D%3D&chksm=6c9c3d7a5bebb46cd41149788337c04da56256c1bb01adffee0fb0eafdf5fe514ca945f5c870&scene=0&previewkey=3A9PT1DdNj7cioBuj4Scb8wqSljwj2bfCUaCyDofEow%253D&key=&ascene=1&uin=&devicetype=Windows+7&version=62060028&lang=zh_CN&winzoom=1##'
+                    url: 'https://mp.weixin.qq.com/s/k6VA28lqCX3SxMsUMWfn3A'
                 })
             }).then(response=>response.blob()).then(blob=>{
                 console.log('sssss')

@@ -1,4 +1,4 @@
-var urls = ['https://mp.weixin.qq.com/s?__biz=MzI5ODk4Njc3NQ==&tempkey=OTM3X3VWY2JuQ2U1SWtzTVR6S3hXZEFndE1jVDJWa2RENlRrRmNMOHg5MWFhRGxmLTZmRmxKQ1ZzZnZicWIweVVwSXZ5RWliUVdCeGR0WDgxNzBoNDc2d2hPT2F6RXM3M0VRTWFiUk8wc21MNjlhdmQyT2wwamwyVE5jbkY5RnpkZjAxVUNvYUlyMTRPQTZqbTY1VXRRdE5IM0dwczBzRFVXaTRYMTM0R2d%2Bfg%3D%3D&chksm=6c9c3d7a5bebb46cd41149788337c04da56256c1bb01adffee0fb0eafdf5fe514ca945f5c870&scene=0&previewkey=3A9PT1DdNj7cioBuj4Scb8wqSljwj2bfCUaCyDofEow%253D&key=&ascene=1&uin=&devicetype=Windows+7&version=62060028&lang=zh_CN&winzoom=1##']
+var urls = ["https://mp.weixin.qq.com/s?__biz=MzI5ODk4Njc3NQ==&tempkey=OTM3X0c0SXkveURKRHIwMkxiaTdXZEFndE1jVDJWa2RENlRrRmNMOHg5MWFhRGxmLTZmRmxKQ1ZzZnZicWIweVVwSXZ5RWliUVdCeGR0WDgxNzBoNDc2d2hPT2F6RXM3M0VRTWFiUk8wc21MNjlhdmQyT2wwamwyVE5jbkY5R3psZ0NucVdESlUzT1hyYTdjdHJwSUluUHpyOUR0UV9ReUxqMmxqRTJ3bFF%2Bfg%3D%3D&chksm=6c9c3d7a5bebb46cd41149788337c04da56256c1bb01adffee0fb0eafdf5fe514ca945f5c870#rd"]
 var webpage = require('webpage')
 
 
@@ -34,6 +34,7 @@ function renderAction() {
 }
 
 page.onConsoleMessage = function (msg) {
+    console.log(msg)
     if (msg.indexOf("IMGLOAD") >= 0) {
         imgCount++
         if (imgCount == summaryCount) {
