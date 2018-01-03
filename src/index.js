@@ -57,13 +57,14 @@ function renderPage() {
 
     if (urls.length) {
         var url = urls.shift()
-        
+
         page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
         page.viewportSize = {width: 750, height: 500}
         page.zoomFactor = 2;
-
         console.log('渲染url', (decodeURIComponent(args[1])))
-        page.open(decodeURIComponent(args[1]), function () {
+        page.open(decodeURIComponent(args[1]), function (status) {
+            console.log(status)
+            if(status == 'success'){
             imgCount = 0
             var res = page.evaluate(function () {
                 var LoadedImgs = []
@@ -85,6 +86,7 @@ function renderPage() {
                         })
                         count++
                     }
+                    
                 }
 
                 try {
@@ -101,7 +103,7 @@ function renderPage() {
                     console.log( JSON.stringify(bc),'============')
 
                     var res = { imgArray: LoadedImgs, lengths: lengths }
-
+                    console.log(LoadedImgs.length)
     
                 } catch (e) {
     
@@ -125,6 +127,7 @@ function renderPage() {
                 renderPage()
             }
             // console.log(JSON.stringify(imgArray))
+        }
         })
     } else {
         window.setTimeout(function () {

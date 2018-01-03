@@ -53,7 +53,7 @@ http.createServer(function (req, res) {
                         // res.setHeader('Content-Type', 'application/octet-stream')
                         // res.setHeader('Content-Disposition', 'attachment;filename=temp.png')
                         fs.createReadStream('./page/' + files[0]).pipe(res)
-                        fs.unlinkSync('./page/' + files[0])
+                        // fs.unlinkSync('./page/' + files[0])
                         // res.end(JSON.stringify({
                         //     errCode: 0,
                         //     msg: '下载成功'
