@@ -11,8 +11,9 @@ var args = system.args;
 // page.clipRect = { top: 0, left: 150, width: 725};
 
 
-page.settings.userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
+// page.settings.userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
 // page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
+
 var originTime = +new Date()
 var startTime = +new Date()
 var loadedImgCount = 0
@@ -27,10 +28,10 @@ function renderAction() {
     var title = page.title.replace(/\//g, '|') || 'temp'
 
     console.log('渲染第' + loadedImgCount + '张页面，耗时：' + custom + 's')
-    console.log('渲染到', './page/' + title + '.png')
+    console.log('渲染到', './page/' + title + '.jpeg')
     startTime = +new Date()
 
-    page.render('./page/' + title + '.png')
+    page.render('./page/' + title + '.jpeg',{format: 'jpeg',quality: '100'})
 }
 
 page.onConsoleMessage = function (msg) {
@@ -56,8 +57,13 @@ function renderPage() {
 
     if (urls.length) {
         var url = urls.shift()
+        
+        page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
+        page.viewportSize = {width: 750, height: 500}
+        page.zoomFactor = 2;
+
         console.log('渲染url', (decodeURIComponent(args[1])))
-        page.open(url, function () {
+        page.open(decodeURIComponent(args[1]), function () {
             imgCount = 0
             var res = page.evaluate(function () {
                 var LoadedImgs = []
@@ -105,14 +111,14 @@ function renderPage() {
 
                 return res
             })
-
+            
             page.clipRect = {
-                top: res.lengths[0],
-                left: res.lengths[1],
-                width: res.lengths[2],
-                height: res.lengths[3]
+                top: res.lengths[0]*2,
+                left: res.lengths[1]*2,
+                width: res.lengths[2]*2,
+                height: res.lengths[3]*2
             }
-
+            
             summaryCount = res.imgArray.length
             if (summaryCount == 0) {
                 renderAction()
