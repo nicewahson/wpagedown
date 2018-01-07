@@ -80,7 +80,7 @@ function renderPage() {
                             console.log('[IMGLOAD]')
                         }
                         img.setAttribute('src', imgDataSrc)
-                        img.style.cssText = 'background: none'
+                        img.style.cssText = 'background: none;border: none'
                         LoadedImgs.push({
                             src: imgSrc,
                             dataSrc: imgDataSrc
