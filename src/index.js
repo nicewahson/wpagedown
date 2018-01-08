@@ -115,12 +115,12 @@ function renderPage() {
                 return res
             })
             
-            page.clipRect = {
-                top: res.lengths[0]*2,
-                left: res.lengths[1]*2,
-                width: res.lengths[2]*2,
-                height: res.lengths[3]*2
-            }
+            // page.clipRect = {
+            //     top: res.lengths[0]*2,
+            //     left: res.lengths[1]*2,
+            //     width: res.lengths[2]*2,
+            //     height: res.lengths[3]*2
+            // }
             
             summaryCount = res.imgArray.length
             if (summaryCount == 0) {

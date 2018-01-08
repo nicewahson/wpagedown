@@ -10,23 +10,25 @@
     <button onclick="download()">下载</button>
     <script>
         function download(){
-            let url = 'http://172.16.255.45:8048'
+            let url = 'http://192.168.88.203:8048'
             fetch(url,{
                 method: 'POST',
                 // credentials: 'include',
                 body: JSON.stringify({
-                    url: 'https://mp.weixin.qq.com/s/gPr09J6631FfpBVK2dqZ-Q'
+                    url: 'https://mp.weixin.qq.com/s/_TFwXss9LPIDTi-r5VLMPA'
                 })
             }).then(response=>response.blob()).then(blob=>{
-                console.log('sssss')
-                var a = new FileReader();
-                a.onload = function (e) {
+                console.log('sssss',blob)
+                // var a = new FileReader();
+                // a.onload = function (e) {
+                    var url = window.URL.createObjectURL(blob)
                     var tga = document.createElement('a')
-                    tga.setAttribute('href', e.target.result)
+                    tga.setAttribute('href', url)
                     tga.setAttribute('download','temp.jpeg')
                     tga.click()
-                }
-                a.readAsDataURL(blob);
+                    window.URL.revokeObjectURL(url);
+                // }
+                // a.readAsDataURL(blob);
             })
         }
     </script>
