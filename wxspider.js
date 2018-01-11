@@ -50,10 +50,17 @@ http.createServer(function (req, res) {
                         // var data = JSON.parse(stdout);
                         console.log(stdout);
 
+                        console.log('stdout')
+
                         // res.setHeader('Content-Type', 'application/octet-stream')
                         // res.setHeader('Content-Disposition', 'attachment;filename=temp.png')
-                        fs.createReadStream('./page/' + files[0]).pipe(res)
-                        res.on('end', function(){
+                        var stm = fs.createReadStream('./page/' + files[0]).pipe(res)
+                        // res.on('end', function(){
+                        //     console.log('end success')
+                        //     // fs.unlinkSync('./page/' + files[0])
+                        // })
+                        stm.on('finish', function(){
+                            console.log('finish success')
                             fs.unlinkSync('./page/' + files[0])
                         })
                         
