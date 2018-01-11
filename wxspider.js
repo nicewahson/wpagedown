@@ -53,10 +53,9 @@ http.createServer(function (req, res) {
                         // res.setHeader('Content-Type', 'application/octet-stream')
                         // res.setHeader('Content-Disposition', 'attachment;filename=temp.png')
                         fs.createReadStream('./page/' + files[0]).pipe(res)
-                        setTimeout(function(){
-                            console.log('outtime')
+                        res.on('end', function(){
                             fs.unlinkSync('./page/' + files[0])
-                        },2000)
+                        })
                         
                         // res.end(JSON.stringify({
                         //     errCode: 0,
