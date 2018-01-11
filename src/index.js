@@ -91,15 +91,14 @@ function renderPage() {
                 }
 
                 try {
-                    // var content = document.getElementById('js_content')
-                    // var bc = content.getBoundingClientRect();
-                    // var top = bc.top;
-                    // var left = bc.left;
-                    // var width = bc.width;
-                    // var height = bc.height;
-                    // // window.scrollTo(0, 10000); //滚动到底部  
-                    // var lengths = [top, left, width, height];
-                    var lengths = [];
+                    var content = document.getElementById('js_content')
+                    var bc = content.getBoundingClientRect();
+                    var top = bc.top;
+                    var left = bc.left;
+                    var width = bc.width;
+                    var height = bc.height;
+                    // window.scrollTo(0, 10000); //滚动到底部  
+                    var lengths = [top, left, width, height];
     
                     // var res = { imgArray: LoadedImgs, lengths: lengths }
                     console.log( JSON.stringify(bc),'============')
