@@ -61,7 +61,7 @@ http.createServer(function (req, res) {
                         // })
                         stm.on('finish', function(){
                             console.log('finish success')
-                            // fs.unlinkSync('./page/' + files[0])
+                            fs.unlinkSync('./page/' + files[0])
                         })
                         
                         // res.end(JSON.stringify({
