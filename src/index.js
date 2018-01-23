@@ -1,4 +1,4 @@
-var urls = ["https://mp.weixin.qq.com/s?__biz=MzI5ODk4Njc3NQ==&tempkey=OTM3X0c0SXkveURKRHIwMkxiaTdXZEFndE1jVDJWa2RENlRrRmNMOHg5MWFhRGxmLTZmRmxKQ1ZzZnZicWIweVVwSXZ5RWliUVdCeGR0WDgxNzBoNDc2d2hPT2F6RXM3M0VRTWFiUk8wc21MNjlhdmQyT2wwamwyVE5jbkY5R3psZ0NucVdESlUzT1hyYTdjdHJwSUluUHpyOUR0UV9ReUxqMmxqRTJ3bFF%2Bfg%3D%3D&chksm=6c9c3d7a5bebb46cd41149788337c04da56256c1bb01adffee0fb0eafdf5fe514ca945f5c870#rd"]
+var urls = ["https://mp.weixin.qq.com/s?__biz=MzI5ODk4Njc3NQ==&tempkey=OTQwX1piTE8zZzhIS2lpMWIvUFZSQlNfZDRxbDQ1NTZmRUhDWWJuWW1CZHZuRWZhbGdseVVmZFBsSjlUcV9UQzdaaUUxQ1Vrb3dUUk16cjJDaXVoZHI4Q01acjcxckh0eWttd2ZiSjFtMEoxcTNmTTFsaXY4cVY2STN3RFVGZ3RENlp4RzRSeld5OVFPclRwbkhwNmhjZElFM3NNX2RRQTNWN2M3MFFiM3d%2Bfg%3D%3D&chksm=6c9c3d685bebb47ebf22fd677ddf335249921271d19fd03048da8cc202b1a16028d11c1f311d#rd"]
 var webpage = require('webpage')
 
 
@@ -58,7 +58,7 @@ function renderPage() {
     if (urls.length) {
         var url = urls.shift()
 
-        page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
+        page.settings.userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
         page.viewportSize = {width: 750, height: 500}
         page.zoomFactor = 2;
         console.log('渲染url', (decodeURIComponent(args[1])))
