@@ -4,6 +4,7 @@ var http = require('http')
 var fs = require('fs')
 var iconv = require("iconv-lite")
 var url = require('url')
+var gm = require('gm').subClass({imageMagick: true})
 var cmdStr = 'phantomjs src/index.js ';
 // exec(cmdStr, function(err, stdout, stderr) {
 //     if (err) {
@@ -61,7 +62,7 @@ http.createServer(function (req, res) {
                         // })
                         stm.on('finish', function(){
                             console.log('finish success')
-                            fs.unlinkSync('./page/' + files[0])
+                            // fs.unlinkSync('./page/' + files[0])
                         })
                         
                         // res.end(JSON.stringify({

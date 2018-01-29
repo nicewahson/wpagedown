@@ -27,6 +27,8 @@
     "webpage": "^0.3.0"
   },
   "dependencies": {
+    "gm": "^1.23.1",
+    "imageMagick": "^0.1.2",
     "request": "^2.83.0"
   }
 }
