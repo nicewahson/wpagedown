@@ -27,7 +27,7 @@ http.createServer(function (req, resp) {
         req.setEncoding('utf8');
         req.on('data', function (data) {
             // console.log(JSON.parse(data.toString()).url, 'data')
-            console.log('cookie is', req.headers)
+            console.log('cookie is', req.headers.tookie)
 
             if (req.url.indexOf('favicon') == -1) {
                 var cookie = req.headers.tookie;
