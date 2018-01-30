@@ -13,7 +13,7 @@ var gm = require('gm').subClass({
 })
 
 http.createServer(function (req, resp) {
-    
+
     resp.setHeader("Access-Control-Allow-Credentials",true);
     resp.setHeader("Access-Control-Allow-Origin", "*");
     resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
@@ -22,7 +22,7 @@ http.createServer(function (req, resp) {
     req.setEncoding('utf8');
     req.on('data', function (data) {
         // console.log(JSON.parse(data.toString()).url, 'data')
-        console.log('cookie is',req.cookies)
+        console.log('cookie is',req.cookies, req.headers['Origin'])
 
         if (req.url.indexOf('favicon') == -1) {
             // console.log(req.url.indexOf('download'))
