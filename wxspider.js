@@ -94,19 +94,21 @@ http.createServer(function (req, resp) {
                                                                     pic: fs.createReadStream('./temp/' + d)
                                                                 }
                                                                 return new Promise(function (resolve, reject) {
+                                                                    setTimeout(function(){
                                                                     request.post({
                                                                         url: uploadurl,
                                                                         formData: formData
                                                                     }, function (err, res, body) {
                                                                         console.log('url', body)
                                                                         if (!err) {
-                                                                            setTimeout(function(){
+                                                                            
                                                                                 resolve(body)
-                                                                            }, Math.floor(Math.random()*2000))
+                                                                            
                                                                         } else {
                                                                             reject('上传失败')
                                                                         }
                                                                     })
+                                                                }, Math.floor(Math.random()*2000))
                                                                 })
                                                             }
                                                         }
