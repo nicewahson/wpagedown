@@ -7,8 +7,8 @@ var exec = require('child_process').exec,
     getPixels = require("get-pixels"),
     constHeight = 900,
     topD = 270,
-    uploadurl = 'http://cardmanage-server.dev.sanqimei.com/upload/addTempImage',
-    appendUrl = 'http://cardmanage-server.dev.sanqimei.com/advertisementPage/addAdvertisementPage',
+    uploadurl = 'http://cardmanage-server.show.sanqimei.com/upload/addTempImage',
+    appendUrl = 'http://cardmanage-server.show.sanqimei.com/advertisementPage/addAdvertisementPage',
     cmdStr = 'phantomjs src/index.js ';
 
 var gm = require('gm').subClass({
@@ -100,7 +100,9 @@ http.createServer(function (req, resp) {
                                                                     }, function (err, res, body) {
                                                                         console.log('url', body)
                                                                         if (!err) {
-                                                                            resolve(body)
+                                                                            setTimeout(function(){
+                                                                                resolve(body)
+                                                                            }, Math.floor(Math.random()*2000))
                                                                         } else {
                                                                             reject('上传失败')
                                                                         }
@@ -138,7 +140,7 @@ http.createServer(function (req, resp) {
                                                     }else{
                                                         fs.readdir('./temp', function (err, files) {
                                                             files.forEach(function (item) {
-                                                                fs.unlink('./temp/' + item)
+                                                                // fs.unlink('./temp/' + item)
                                                             })
                                                         })
     
