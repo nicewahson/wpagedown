@@ -19,7 +19,7 @@ http.createServer(function (req, resp) {
 
     resp.setHeader("Access-Control-Allow-Credentials","true");
     resp.setHeader("Access-Control-Allow-Origin", req.headers.origin);
-    resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With,tookie");
+    resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With,token");
     resp.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     resp.setHeader("X-Powered-By", ' 3.2.1');
     resp.setHeader("test", ' 3.2.1');
