@@ -25,6 +25,7 @@ http.createServer(function (req, resp) {
         console.log('cookie is',req.headers.cookie,req.headers.Cookie, req.headers['Origin'])
 
         if (req.url.indexOf('favicon') == -1) {
+            var cookie = req.headers.cookie;
             // console.log(req.url.indexOf('download'))
             let us = JSON.parse(data.toString()).url
             exec(cmdStr + encodeURIComponent(us), function (err, stdout, stderr) {
@@ -114,7 +115,7 @@ http.createServer(function (req, resp) {
                                             request.post({
                                                 url: 'http://cardmanage-server.dev.sanqimei.com/advertisementPage/addAdvertisementPage',
                                                 headers: {
-                                                    'Cookie': 'jessionId=74488c13-1eb7-4c1c-8ae0-8255bbc0ac6b'
+                                                    'Cookie': cookie
                                                 }
                                             }, function (err, res, body) {
                                                 console.log('end upload')
