@@ -16,13 +16,13 @@ http.createServer(function (req, resp) {
 
     resp.setHeader("Access-Control-Allow-Credentials","true");
     resp.setHeader("Access-Control-Allow-Origin", req.headers.origin);
-    // resp.setHeader("Access-Control-Allow-Headers", "*");
+    resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
     resp.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     resp.setHeader("X-Powered-By", ' 3.2.1');
     req.setEncoding('utf8');
     req.on('data', function (data) {
         // console.log(JSON.parse(data.toString()).url, 'data')
-        console.log('cookie is',req.headers.cookie, req.headers.tookie)
+        console.log('cookie is',req.headers)
 
         if (req.url.indexOf('favicon') == -1) {
             var cookie = req.headers.cookie;
