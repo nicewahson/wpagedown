@@ -19,6 +19,7 @@ http.createServer(function (req, resp) {
     resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With,tookie");
     resp.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     resp.setHeader("X-Powered-By", ' 3.2.1');
+    resp.setHeader("test", ' 3.2.1');
     req.setEncoding('utf8');
     req.on('data', function (data) {
         // console.log(JSON.parse(data.toString()).url, 'data')
