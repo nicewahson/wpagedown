@@ -83,9 +83,11 @@ http.createServer(function (req, resp) {
                                                                     // console.log('result urls', res)
                                                                     urls = res;
                                                                     upload()
-                                                                }).catch(function(e){
+                                                                }).catch(function (e) {
                                                                     resp.setHeader('Content-Type', 'application/json;charset=utf-8')
-                                                                    resp.end({errorMsg: '上传图片出错了~'}, 'utf8')
+                                                                    resp.end({
+                                                                        errorMsg: '上传图片出错了~'
+                                                                    }, 'utf8')
                                                                 })
                                                             })
 
@@ -94,21 +96,21 @@ http.createServer(function (req, resp) {
                                                                     pic: fs.createReadStream('./temp/' + d)
                                                                 }
                                                                 return new Promise(function (resolve, reject) {
-                                                                    setTimeout(function(){
-                                                                    request.post({
-                                                                        url: uploadurl,
-                                                                        formData: formData
-                                                                    }, function (err, res, body) {
-                                                                        console.log('url', body)
-                                                                        if (!err) {
-                                                                            
+                                                                    setTimeout(function () {
+                                                                        request.post({
+                                                                            url: uploadurl,
+                                                                            formData: formData
+                                                                        }, function (err, res, body) {
+                                                                            console.log('url', body)
+                                                                            if (!err) {
+
                                                                                 resolve(body)
-                                                                            
-                                                                        } else {
-                                                                            reject('上传失败')
-                                                                        }
-                                                                    })
-                                                                }, Math.floor(Math.random()*2000))
+
+                                                                            } else {
+                                                                                reject('上传失败')
+                                                                            }
+                                                                        })
+                                                                    }, Math.floor(Math.random() * 2000))
                                                                 })
                                                             }
                                                         }
@@ -136,16 +138,18 @@ http.createServer(function (req, resp) {
                                                 }, function (err, res, body) {
                                                     console.log('end upload')
                                                     console.log(err, body)
-                                                    if(err){
+                                                    if (err) {
                                                         resp.setHeader('Content-Type', 'application/json;charset=utf-8')
-                                                        resp.end({errorMsg: '上传大图又失败了~'}, 'utf8')
-                                                    }else{
+                                                        resp.end({
+                                                            errorMsg: '上传大图又失败了~'
+                                                        }, 'utf8')
+                                                    } else {
                                                         fs.readdir('./temp', function (err, files) {
                                                             files.forEach(function (item) {
                                                                 // fs.unlink('./temp/' + item)
                                                             })
                                                         })
-    
+
                                                         fs.unlinkSync('./page/' + outfiles[0])
                                                         resp.setHeader('Content-Type', 'application/json;charset=utf-8')
                                                         resp.end(body, 'utf8')
