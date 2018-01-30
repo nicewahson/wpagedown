@@ -7,8 +7,8 @@ var exec = require('child_process').exec,
     getPixels = require("get-pixels"),
     constHeight = 900,
     topD = 270,
-    uploadurl = 'http://cardmanage-server.show.sanqimei.com/upload/addTempImage',
-    appendUrl = 'http://cardmanage-server.show.sanqimei.com/advertisementPage/addAdvertisementPage',
+    uploadurl = 'http://cardmanage-server.dev.sanqimei.com/upload/addTempImage',
+    appendUrl = 'http://cardmanage-server.dev.sanqimei.com/advertisementPage/addAdvertisementPage',
     cmdStr = 'phantomjs src/index.js ';
 
 var gm = require('gm').subClass({
@@ -63,6 +63,7 @@ http.createServer(function (req, resp) {
                                                 delta = 0,
                                                 ms = (psHeight - Math.floor(psHeight / constHeight) * constHeight) > 0 ? Math.floor(psHeight / constHeight) + 1 : Math.floor(psHeight / constHeight)
                                             var crops = function (d) {
+                                                d = ('00' + d).slice(-2)
                                                 gm('./page/' + files[0]).crop(750, constHeight, 0, topD + delta * constHeight).autoOrient().write('./temp/t' + d + '.jpg', function (err) {
 
                                                     delta += 1
@@ -96,23 +97,23 @@ http.createServer(function (req, resp) {
                                                                     pic: fs.createReadStream('./temp/' + d)
                                                                 }
                                                                 return new Promise(function (resolve, reject) {
-                                                                    setTimeout(function () {
+                                                                    // setTimeout(function () {
+                                                                        console.log('ddddd',d)
                                                                         request.post({
                                                                             url: uploadurl,
                                                                             formData: formData
                                                                         }, function (err, res, body) {
                                                                             console.log('url', body)
                                                                             if (!err) {
-
                                                                                 resolve(body)
-
                                                                             } else {
                                                                                 reject('上传失败')
                                                                             }
                                                                         })
-                                                                    }, Math.floor(Math.random() * 2000))
+                                                                    // }, d.slice(1,3)*3000)                                                                                             
                                                                 })
                                                             }
+
                                                         }
                                                     }
                                                 });
@@ -146,7 +147,7 @@ http.createServer(function (req, resp) {
                                                     } else {
                                                         fs.readdir('./temp', function (err, files) {
                                                             files.forEach(function (item) {
-                                                                fs.unlink('./temp/' + item)
+                                                                // fs.unlink('./temp/' + item)
                                                             })
                                                         })
 
