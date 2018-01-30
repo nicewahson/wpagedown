@@ -21,6 +21,7 @@ http.createServer(function (req, resp) {
     req.setEncoding('utf8');
     req.on('data', function (data) {
         // console.log(JSON.parse(data.toString()).url, 'data')
+        console.log('cookie is',req.cookie)
 
         if (req.url.indexOf('favicon') == -1) {
             // console.log(req.url.indexOf('download'))
