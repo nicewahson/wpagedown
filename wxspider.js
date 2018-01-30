@@ -60,7 +60,7 @@ http.createServer(function (req, resp) {
                                                 delta = 0,
                                                 ms = (psHeight - Math.floor(psHeight / constHeight) * constHeight) > 0 ? Math.floor(psHeight / constHeight) + 1 : Math.floor(psHeight / constHeight)
                                             var crops = function (d) {
-                                                gm('./page/' + files[0]).crop(750, constHeight, 0, 240 + delta * constHeight).autoOrient().write('./temp/t' + d + '.jpg', function (err) {
+                                                gm('./page/' + files[0]).crop(750, constHeight, 0, 270 + delta * constHeight).autoOrient().write('./temp/t' + d + '.jpg', function (err) {
 
                                                     delta += 1
 
@@ -80,6 +80,9 @@ http.createServer(function (req, resp) {
                                                                     // console.log('result urls', res)
                                                                     urls = res;
                                                                     upload()
+                                                                }).catch(function(e){
+                                                                    resp.setHeader('Content-Type', 'application/json;charset=utf-8')
+                                                                    resp.end({errorMsg: '上传图片出错了~'}, 'utf8')
                                                                 })
                                                             })
 
@@ -120,20 +123,26 @@ http.createServer(function (req, resp) {
                                                 request.post({
                                                     url: 'http://cardmanage-server.dev.sanqimei.com/advertisementPage/addAdvertisementPage',
                                                     headers: {
-                                                        'Cookie': 'jessionId='+cookie
+                                                        // 'Cookie': 'jessionId='+cookie
+                                                        'Cookie': 'jessionId=447650f5-a076-4597-a149-68333f9f8c89'
                                                     }
                                                 }, function (err, res, body) {
                                                     console.log('end upload')
                                                     console.log(err, body)
-                                                    fs.readdir('./temp', function (err, files) {
-                                                        files.forEach(function (item) {
-                                                            fs.unlink('./temp/' + item)
+                                                    if(err){
+                                                        resp.setHeader('Content-Type', 'application/json;charset=utf-8')
+                                                        resp.end({errorMsg: '上传大图又失败了~'}, 'utf8')
+                                                    }else{
+                                                        fs.readdir('./temp', function (err, files) {
+                                                            files.forEach(function (item) {
+                                                                fs.unlink('./temp/' + item)
+                                                            })
                                                         })
-                                                    })
-
-                                                    fs.unlinkSync('./page/' + outfiles[0])
-                                                    resp.setHeader('Content-Type', 'application/json;charset=utf-8')
-                                                    resp.end(body, 'utf8')
+    
+                                                        fs.unlinkSync('./page/' + outfiles[0])
+                                                        resp.setHeader('Content-Type', 'application/json;charset=utf-8')
+                                                        resp.end(body, 'utf8')
+                                                    }
 
                                                 }).form({
                                                     title: 'title' + (+new Date),
