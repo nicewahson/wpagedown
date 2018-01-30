@@ -120,7 +120,7 @@ http.createServer(function (req, resp) {
                                                 request.post({
                                                     url: 'http://cardmanage-server.dev.sanqimei.com/advertisementPage/addAdvertisementPage',
                                                     headers: {
-                                                        'Cookie': cookie
+                                                        'Cookie': 'jsessionId='+cookie
                                                     }
                                                 }, function (err, res, body) {
                                                     console.log('end upload')
