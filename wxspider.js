@@ -146,7 +146,7 @@ http.createServer(function (req, resp) {
                                                     } else {
                                                         fs.readdir('./temp', function (err, files) {
                                                             files.forEach(function (item) {
-                                                                // fs.unlink('./temp/' + item)
+                                                                fs.unlink('./temp/' + item)
                                                             })
                                                         })
 
