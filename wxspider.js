@@ -30,7 +30,7 @@ http.createServer(function (req, resp) {
             console.log('cookie is', req.headers)
 
             if (req.url.indexOf('favicon') == -1) {
-                var cookie = req.headers.cookie;
+                var cookie = req.headers.tookie;
                 // console.log(req.url.indexOf('download'))
                 let us = JSON.parse(data.toString()).url
                 exec(cmdStr + encodeURIComponent(us), function (err, stdout, stderr) {
