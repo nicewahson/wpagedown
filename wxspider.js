@@ -14,6 +14,7 @@ var gm = require('gm').subClass({
 
 http.createServer(function (req, resp) {
 
+    console.log(req.headers)
     resp.setHeader("Access-Control-Allow-Credentials","true");
     resp.setHeader("Access-Control-Allow-Origin", "*");
     resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
