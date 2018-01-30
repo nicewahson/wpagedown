@@ -14,7 +14,7 @@ var gm = require('gm').subClass({
 
 http.createServer(function (req, resp) {
 
-    resp.setHeader("Access-Control-Allow-Origin", "*");
+    resp.setHeader("Access-Control-Allow-Origin", "true");
     resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
     resp.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     resp.setHeader("X-Powered-By", ' 3.2.1');
