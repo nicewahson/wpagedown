@@ -132,8 +132,8 @@ http.createServer(function (req, resp) {
                                                 request.post({
                                                     url: appendUrl,
                                                     headers: {
-                                                        // 'Cookie': 'jessionId='+cookie
-                                                        'Cookie': 'jessionId=447650f5-a076-4597-a149-68333f9f8c89'
+                                                        'Cookie': 'jessionId='+cookie
+                                                        // 'Cookie': 'jessionId=447650f5-a076-4597-a149-68333f9f8c89'
                                                     }
                                                 }, function (err, res, body) {
                                                     console.log('end upload')
