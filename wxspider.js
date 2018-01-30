@@ -16,7 +16,7 @@ http.createServer(function (req, resp) {
 
     console.log(req.headers)
     resp.setHeader("Access-Control-Allow-Credentials","true");
-    resp.setHeader("Access-Control-Allow-Origin", "*");
+    resp.setHeader("Access-Control-Allow-Origin", req.headers.origin);
     resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
     resp.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     resp.setHeader("X-Powered-By", ' 3.2.1');
