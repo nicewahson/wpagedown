@@ -58,10 +58,10 @@ http.createServer(function (req, resp) {
                                     } else {
                                         getPixels('./page/' + files[0], function (err, pixels) {
                                             console.log('height and width', pixels.shape.slice())
-                                            var psHeight = pixels.shape.slice()[1],
+                                            var psHeight = pixels.shape.slice()[1] - topD,
                                                 urls = [],
                                                 delta = 0,
-                                                ms = (psHeight - Math.floor(psHeight / constHeight) * constHeight) > 0 ? Math.floor(psHeight / constHeight) + 1 : Math.floor(psHeight / constHeight)
+                                                ms = Math.ceil(psHeight/constHeight)
                                             var crops = function (d) {
                                                 d = ('00' + d).slice(-2)
                                                 gm('./page/' + files[0]).crop(750, constHeight, 0, topD + delta * constHeight).autoOrient().write('./temp/t' + d + '.jpg', function (err) {
@@ -147,7 +147,7 @@ http.createServer(function (req, resp) {
                                                     } else {
                                                         fs.readdir('./temp', function (err, files) {
                                                             files.forEach(function (item) {
-                                                                // fs.unlink('./temp/' + item)
+                                                                fs.unlink('./temp/' + item)
                                                             })
                                                         })
 
