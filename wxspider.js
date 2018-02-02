@@ -84,13 +84,15 @@ http.createServer(function (req, resp) {
                                                                     // console.log('result urls', res)
                                                                     urls = res;
                                                                     if(req.url.indexOf('getPics')>-1){
+                                                                        console.log('获取所有截图链接开始>>>>>>>>>>>>')
                                                                         resp.setHeader('Content-Type', 'application/json;charset=utf-8')
                                                                         resp.end(JSON.stringify({
                                                                             status: '1',
-                                                                            res: {
+                                                                            result: {
                                                                                 pic: urls
                                                                             }
                                                                         }), 'utf8')
+                                                                        console.log('获取所有截图链接结束>>>>>>>>>>>>')
                                                                     }else{
                                                                         upload()
                                                                     }
