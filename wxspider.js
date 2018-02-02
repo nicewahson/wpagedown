@@ -84,12 +84,7 @@ http.createServer(function (req, resp) {
                                                                     // console.log('result urls', res)
                                                                     urls = res;
                                                                     if(req.url.indexOf('getPics')>-1){
-                                                                        resp.end({
-                                                                            status: '1',
-                                                                            res: {
-                                                                                pics: urls
-                                                                            }
-                                                                        }, 'utf8')
+                                                                        resp.end('123')
                                                                     }else{
                                                                         upload()
                                                                     }
