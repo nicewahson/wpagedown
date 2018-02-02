@@ -83,7 +83,16 @@ http.createServer(function (req, resp) {
                                                                 Promise.all(pos).then(function (res) {
                                                                     // console.log('result urls', res)
                                                                     urls = res;
-                                                                    upload()
+                                                                    if(req.url.indexOf('getPics')>-1){
+                                                                        resp.end({
+                                                                            status: '1',
+                                                                            res: {
+                                                                                pics: urls
+                                                                            }
+                                                                        })
+                                                                    }else{
+                                                                        upload()
+                                                                    }
                                                                 }).catch(function (e) {
                                                                     resp.setHeader('Content-Type', 'application/json;charset=utf-8')
                                                                     resp.end({
