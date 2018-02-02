@@ -89,7 +89,7 @@ http.createServer(function (req, resp) {
                                                                             res: {
                                                                                 pics: urls
                                                                             }
-                                                                        })
+                                                                        }, 'utf8')
                                                                     }else{
                                                                         upload()
                                                                     }
