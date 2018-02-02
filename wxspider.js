@@ -85,9 +85,12 @@ http.createServer(function (req, resp) {
                                                                     urls = res;
                                                                     if(req.url.indexOf('getPics')>-1){
                                                                         resp.setHeader('Content-Type', 'application/json;charset=utf-8')
-                                                                        resp.end({
-                                                                            errorMsg: '上传图片出错了~'
-                                                                        }, 'utf8')
+                                                                        resp.end(JSON.stringify({
+                                                                            status: '1',
+                                                                            res: {
+                                                                                pic: urls
+                                                                            }
+                                                                        }), 'utf8')
                                                                     }else{
                                                                         upload()
                                                                     }
