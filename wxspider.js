@@ -52,11 +52,11 @@ http.createServer(function (req, resp) {
                                 })
                             } else if (req.url.indexOf('generate') > -1) { //一键生成
                                 console.log('begin generate >>>>>>>>>>')
-                                fs.readdir('./page', function (err, files) {
+                                fs.readdir('./page', function (err, ofiles) {
                                     if (err) {
                                         console.log('open error:' + stderr);
                                     } else {
-                                        getPixels('./page/' + files[0], function (err, pixels) {
+                                        getPixels('./page/' + ofiles[0], function (err, pixels) {
                                             console.log('height and width', pixels.shape.slice())
                                             var psHeight = pixels.shape.slice()[1] - topD,
                                                 urls = [],
@@ -64,7 +64,7 @@ http.createServer(function (req, resp) {
                                                 ms = Math.ceil(psHeight/constHeight)
                                             var crops = function (d) {
                                                 d = ('00' + d).slice(-2)
-                                                gm('./page/' + files[0]).crop(750, constHeight, 0, topD + delta * constHeight).autoOrient().write('./temp/t' + d + '.jpg', function (err) {
+                                                gm('./page/' + ofiles[0]).crop(750, constHeight, 0, topD + delta * constHeight).autoOrient().write('./temp/t' + d + '.jpg', function (err) {
 
                                                     delta += 1
 
@@ -86,14 +86,11 @@ http.createServer(function (req, resp) {
                                                                     if(req.url.indexOf('getPics')>-1){
                                                                         console.log('获取所有截图链接开始>>>>>>>>>>>>')
 
-                                                                        fs.unlinkSync('./page/' + outfiles[0])
-                                                                        fs.readdir('./temp', function (err, files) {
-                                                                            files.forEach(function (item) {
-                                                                                fs.unlink('./temp/' + item)
-                                                                            })
+                                                                        fs.unlinkSync('./page/' + ofiles[0])
+                                                                        files.forEach(function (item) {
+                                                                            fs.unlink('./temp/' + item)
                                                                         })
                 
-                                                                        fs.unlinkSync('./page/' + outfiles[0])
                                                                         resp.setHeader('Content-Type', 'application/json;charset=utf-8')
                                                                         resp.end(JSON.stringify({
                                                                             status: '1',
