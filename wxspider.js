@@ -85,6 +85,15 @@ http.createServer(function (req, resp) {
                                                                     urls = res;
                                                                     if(req.url.indexOf('getPics')>-1){
                                                                         console.log('获取所有截图链接开始>>>>>>>>>>>>')
+
+                                                                        fs.unlinkSync('./page/' + outfiles[0])
+                                                                        fs.readdir('./temp', function (err, files) {
+                                                                            files.forEach(function (item) {
+                                                                                fs.unlink('./temp/' + item)
+                                                                            })
+                                                                        })
+                
+                                                                        fs.unlinkSync('./page/' + outfiles[0])
                                                                         resp.setHeader('Content-Type', 'application/json;charset=utf-8')
                                                                         resp.end(JSON.stringify({
                                                                             status: '1',
