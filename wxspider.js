@@ -31,6 +31,7 @@ http.createServer(function (req, resp) {
         req.on('data', function (data) {
             // console.log(JSON.parse(data.toString()).url, 'data')
             console.log('cookie is', req.headers.tookie)
+            console.log('url', req.url)
 
             if (req.url.indexOf('favicon') == -1) {
                 var cookie = req.headers.tookie;
