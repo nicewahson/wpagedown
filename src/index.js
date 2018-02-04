@@ -1,4 +1,4 @@
-var urls = ["https://mp.weixin.qq.com/s?__biz=MzI5ODk4Njc3NQ==&tempkey=OTQwX1piTE8zZzhIS2lpMWIvUFZSQlNfZDRxbDQ1NTZmRUhDWWJuWW1CZHZuRWZhbGdseVVmZFBsSjlUcV9UQzdaaUUxQ1Vrb3dUUk16cjJDaXVoZHI4Q01acjcxckh0eWttd2ZiSjFtMEoxcTNmTTFsaXY4cVY2STN3RFVGZ3RENlp4RzRSeld5OVFPclRwbkhwNmhjZElFM3NNX2RRQTNWN2M3MFFiM3d%2Bfg%3D%3D&chksm=6c9c3d685bebb47ebf22fd677ddf335249921271d19fd03048da8cc202b1a16028d11c1f311d#rd"]
+var urls = ["https://www.baidu.com"]
 var webpage = require('webpage')
 
 
@@ -42,6 +42,10 @@ page.onConsoleMessage = function (msg) {
             renderAction()
             renderPage()
         }
+    }
+    if(msg.indexOf('[NODOM]')>-1){
+        console.log('error--------',msg.slice(8))
+        phantom.exit()
     }
 }
 

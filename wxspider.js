@@ -38,6 +38,17 @@ http.createServer(function (req, resp) {
                 // console.log(req.url.indexOf('download'))
                 let us = JSON.parse(data.toString()).url
                 exec(cmdStr + encodeURIComponent(us), function (err, stdout, stderr) {
+
+                    console.log('phantom start ======================================================');
+                    console.log(stdout);
+                    if(stdout.indexOf('error')>-1){
+                        resp.setHeader('Content-Type', 'application/json;charset=utf-8')
+                        return resp.end(JSON.stringify({
+                            errorMsg: '图片链接似乎有点问题o~'
+                        }), 'utf8')
+                    }
+                    console.log('phantom end ======================================================')
+
                     fs.readdir('./page', function (err, outfiles) {
 
                         if (err) {
@@ -105,9 +116,9 @@ http.createServer(function (req, resp) {
                                                                     }
                                                                 }).catch(function (e) {
                                                                     resp.setHeader('Content-Type', 'application/json;charset=utf-8')
-                                                                    resp.end({
+                                                                    return resp.end(JSON.stringify({
                                                                         errorMsg: '上传图片出错了~'
-                                                                    }, 'utf8')
+                                                                    }), 'utf8')
                                                                 })
                                                             })
 
