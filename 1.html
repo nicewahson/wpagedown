@@ -16,7 +16,10 @@
             let url = 'http://192.168.88.203:8048/download'
             fetch(url, {
                 method: 'POST',
-                // credentials: 'include',
+                credentials: 'include',
+                headers: {
+                    tookie: '0b35406d-44d9-4e0d-9baa-da4e56f875a7',
+                },
                 body: JSON.stringify({
                     url: 'https://mp.weixin.qq.com/s/DkbDa2506-dJQ8HY6JFfBg'
                 })

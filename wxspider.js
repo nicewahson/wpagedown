@@ -6,7 +6,7 @@ var exec = require('child_process').exec,
     url = require('url'),
     getPixels = require("get-pixels"),
     constHeight = 900,
-    topD = 270,
+    topD = 0,
     uploadurl = 'http://cardmanage-server.dev.sanqimei.com/upload/addTempImage',
     appendUrl = 'http://cardmanage-server.dev.sanqimei.com/advertisementPage/addAdvertisementPage',
     cmdStr = 'phantomjs src/index.js ';
@@ -17,7 +17,7 @@ var gm = require('gm').subClass({
 
 http.createServer(function (req, resp) {
     console.log(req.method)
-    resp.setHeader("Access-Control-Allow-Credentials", "true");
+    // resp.setHeader("Access-Control-Allow-Credentials", "true");
     resp.setHeader("Access-Control-Allow-Origin", req.headers.origin);
     resp.setHeader("Access-Control-Allow-Headers", "X-Requested-With,token, tookie");
     resp.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
