@@ -7,8 +7,8 @@ var exec = require('child_process').exec,
     getPixels = require("get-pixels"),
     constHeight = 900,
     topD = 0,
-    uploadurl = 'http://cardmanage-server.dev.sanqimei.com/upload/addTempImage',
-    appendUrl = 'http://cardmanage-server.dev.sanqimei.com/advertisementPage/addAdvertisementPage',
+    uploadurl = 'http://cardmanage-server.sanqimei.com/upload/addTempImage',
+    appendUrl = 'http://cardmanage-server.sanqimei.com/advertisementPage/addAdvertisementPage',
     cmdStr = 'phantomjs src/index.js ';
 
 var gm = require('gm').subClass({
